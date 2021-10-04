@@ -68,7 +68,7 @@ Since the purpose of this data warehouse is for OLAP and BI app usage, we will m
 
 * Star Schema
 
-	![alt text](https://github.com/KentHsu/Udacity-DEND/blob/main/Capstone%20Project/images/conceptual_data_model1.png)
+	![alt text](https://github.com/Canalytix/CapstoneProject/blob/main/conceptual_data_model1.PNG)
 
 #### Data Pipeline Build Up Steps
 
