@@ -1,7 +1,16 @@
-# Udacity Data Engineer Nanodegree - Capstone Project
+# Udacity Data Engineer Nanodegree - Capstone Project - US Immigration data warehouse
 
 ### Project Summary
+This is the capstone project for the Udacity Data Engineering Nanodegree program. The idea is to take multiple data sources, clean the data, and process it to produce a usable data set for analytics.
+
 This project build up a data warehouse by integrating immigration data and demography data together to provide a wider range [single-source-of-truth](https://en.wikipedia.org/wiki/Single_source_of_truth) database.
+
+Ideas on questions we could explore with the final data set:
+
+* For a given port city, how many immigrants enter from which countries?
+* What are the demographics of the port city and is there any relationship to the country of origin?
+* Is there any relationship between the average temperature of the country of origin and average temperature of the port city of entry?
+* What time of year or month sees more immigration for certain areas?
 
 The project follows the follow steps:
 
@@ -55,7 +64,7 @@ This project will integrate I94 immigration data, world temperature data and US 
 2. Parse description file to get auxiliary dimension table - country_code, city _code, state _code, mode, visa
 3. Tranform city, state to upper case to match city _code and state _code table
 
-Please refer to [Capstone_Project.ipynb](https://github.com/KentHsu/Udacity-DEND/blob/main/Capstone%20Project/Capstone_Project.ipynb).
+Please refer to Capstone_Project.ipynb
 
 (This step was completed in Udacity workspace as pre-steps for building up and testing the ETL data pipeline. File paths should be modified if notebook is run locally.)
 
@@ -64,7 +73,7 @@ Please refer to [Capstone_Project.ipynb](https://github.com/KentHsu/Udacity-DEND
 ### Step 3: Define the Data Model
 
 #### Conceptual Data Model
-Since the purpose of this data warehouse is for OLAP and BI app usage, we will model these data sets with star schema data modeling.
+Since the purpose of this data warehouse is for OLAP and BI app usage, and the Star Schema is the simplest style of data mart schema and is the approach most widely used to develop data warehouses and dimensional data marts, we will model these data sets with Star Schema data modeling.
 
 * Star Schema
 
@@ -90,9 +99,9 @@ Since the purpose of this data warehouse is for OLAP and BI app usage, we will m
 
 #### 4.1 Create the data model
 
-Data processing and data model was created by Spark.
+Data processing and data model was created by Spark for I94 immigration data seperately.
 
-Please refer to [Capstone_Project.ipynb](https://github.com/KentHsu/Udacity-DEND/blob/main/Capstone%20Project/Capstone_Project.ipynb).
+Please refer to etl_immigration.ipynb
 
 #### 4.2 Data Quality Checks
 
@@ -101,20 +110,20 @@ Data quality checks includes
 1. No empty table after running ETL data pipeline
 2. Data schema of every dimensional table matches data model
 
-Please refer to [Data_Quality_Check.ipynb](https://github.com/KentHsu/Udacity-DEND/blob/main/Capstone%20Project/Data_Quality_Check.ipynb).
+Please refer to Data_Quality_Check.ipynb
 
 #### 4.3 Data dictionary 
 
-![alt text](https://github.com/KentHsu/Udacity-DEND/blob/main/Capstone%20Project/images/data_dictionary.png)
+![alt text](https://github.com/Canalytix/CapstoneProject/blob/main/data_dictionary.png)
 
 ---
 
 ### Step 5: Complete Project Write Up
 
 #### Tools and Technologies
-1. AWS S3 for data storage
-2. Pandas for sample data set exploratory data analysis
-3. PySpark for large data set data processing to transform staging table to dimensional table
+1. AWS S3 for data storage - I used S3 for data lake storage of the data to be processed. While we are building a data warehouse for a certain type of analysis, the data lake contains the cleaned raw data which could be used for a different type of analysis at a later time.
+2. Pandas for sample data set exploratory data analysis - I used Pandas for data processing and explorations of small chunk of the dataset since pandas is the most efficient tool for data preprocessing and EDA.
+3. PySpark for large data set data processing to transform staging table to dimensional table - PySpark is the right tool for data transformations of large dataset
 
 
 #### Data Update Frequency
